@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rahul Deo — SEO & AI-Driven Growth Marketing Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#07102a;
+  --navy2:#0d1840;
+  --teal:#00e5d8;
+  --teal2:#00c4b8;
+  --electric:#5a9bff;
+  --white:#f0f6ff;
+  --muted:#a0aec8;
+  --text:#dde6f5;
+  --card-bg:rgba(255,255,255,0.055);
+  --card-hover:rgba(255,255,255,0.09);
+  --border:rgba(0,229,216,0.18);
+  --border-hover:rgba(0,229,216,0.45);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(145deg,#07102a 0%,#0b1a3e 50%,#07182a 100%);
+  color:var(--text);min-height:100vh;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 70% 45% at 15% 5%,rgba(0,229,216,0.09) 0%,transparent 65%),
+    radial-gradient(ellipse 55% 35% at 85% 85%,rgba(90,155,255,0.09) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 30% at 50% 50%,rgba(0,229,216,0.03) 0%,transparent 70%);
+  pointer-events:none;z-index:0;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;width:100%;z-index:200;
+  background:rgba(7,16,42,0.92);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  padding:0 5%;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;
+  background:linear-gradient(90deg,var(--teal),var(--electric));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:.04em;flex-shrink:0;
+}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center;}
+.nav-links a{
+  color:var(--muted);font-size:.82rem;text-decoration:none;
+  letter-spacing:.06em;text-transform:uppercase;font-weight:500;
+  transition:color .2s;padding:4px 0;
+}
+.nav-links a:hover{color:var(--teal);}
+
+/* hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;z-index:300;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--teal);border-radius:2px;transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.mobile-menu{
+  display:none;position:fixed;top:64px;left:0;right:0;
+  background:rgba(7,16,42,0.98);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);z-index:199;
+  flex-direction:column;padding:20px 5% 28px;gap:4px;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+  color:var(--text);font-size:1rem;text-decoration:none;
+  padding:12px 16px;border-radius:10px;font-weight:500;
+  letter-spacing:.04em;transition:background .2s,color .2s;
+}
+.mobile-menu a:hover{background:rgba(0,229,216,0.1);color:var(--teal);}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:100px 5% 60px;position:relative;z-index:1;
+}
+.hero-inner{max-width:800px;width:100%;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--teal);color:var(--teal);
+  font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:8px 22px;border-radius:50px;margin-bottom:30px;
+  background:rgba(0,229,216,0.07);
+  animation:fadeDown .8s ease both;
+}
+.hero-badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
+.hero-name{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(2.6rem,7.5vw,5.2rem);
+  font-weight:700;line-height:1.04;
+  background:linear-gradient(135deg,#ffffff 0%,var(--teal) 55%,var(--electric) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:fadeUp .9s ease .1s both;margin-bottom:16px;
+}
+.hero-title{
+  font-size:clamp(1rem,2.8vw,1.25rem);
+  color:var(--muted);font-weight:400;letter-spacing:.01em;
+  animation:fadeUp .9s ease .25s both;margin-bottom:40px;line-height:1.7;
+}
+.hero-title strong{color:var(--text);font-weight:600;}
+.hero-ctas{
+  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  animation:fadeUp .9s ease .4s both;
+}
+.btn-primary{
+  padding:14px 36px;border-radius:10px;font-weight:600;font-size:.95rem;
+  background:linear-gradient(135deg,var(--teal),var(--electric));
+  color:#07102a;border:none;cursor:pointer;text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 4px 24px rgba(0,229,216,0.28);display:inline-block;
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,229,216,0.42);}
+.btn-outline{
+  padding:14px 36px;border-radius:10px;font-weight:600;font-size:.95rem;
+  border:1.5px solid var(--teal);color:var(--teal);text-decoration:none;
+  transition:all .2s;background:transparent;cursor:pointer;display:inline-block;
+}
+.btn-outline:hover{background:rgba(0,229,216,0.1);transform:translateY(-3px);}
+
+.hero-stats{
+  display:flex;gap:0;justify-content:center;flex-wrap:wrap;
+  margin-top:60px;padding-top:44px;border-top:1px solid var(--border);
+  animation:fadeUp .9s ease .55s both;
+}
+.stat{
+  text-align:center;padding:0 28px;
+  border-right:1px solid var(--border);
+}
+.stat:last-child{border-right:none;}
+.stat-num{
+  font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;
+  background:linear-gradient(135deg,var(--teal),var(--electric));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.stat-label{font-size:.75rem;color:var(--muted);letter-spacing:.09em;text-transform:uppercase;margin-top:5px;font-weight:500;}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;padding:96px 5%;}
+section:nth-child(even){background:rgba(255,255,255,0.015);}
+.section-tag{
+  font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--teal);font-weight:600;margin-bottom:8px;
+}
+.section-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(1.75rem,4vw,2.6rem);
+  font-weight:700;margin-bottom:12px;color:var(--white);
+}
+.section-line{
+  width:52px;height:3px;
+  background:linear-gradient(90deg,var(--teal),var(--electric));
+  border-radius:2px;margin-bottom:52px;
+}
+.max-w{max-width:1120px;margin:0 auto;}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:start;}
+.avatar-wrap{
+  width:100%;aspect-ratio:1;border-radius:24px;
+  background:linear-gradient(135deg,rgba(0,229,216,0.12),rgba(90,155,255,0.1));
+  border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:5.5rem;position:sticky;top:90px;
+  box-shadow:0 8px 40px rgba(0,229,216,0.08);
+}
+.about-summary{
+  font-size:1.05rem;line-height:1.85;color:var(--text);margin-bottom:20px;
+}
+.info-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+.pill{
+  padding:8px 18px;border-radius:50px;font-size:.82rem;
+  border:1px solid var(--border);background:var(--card-bg);color:var(--text);
+  display:flex;align-items:center;gap:6px;
+}
+.pill span{color:var(--teal);font-weight:500;}
+
+/* ── TIMELINE ── */
+.timeline{position:relative;padding-left:32px;}
+.timeline::before{
+  content:'';position:absolute;left:0;top:8px;bottom:0;
+  width:2px;background:linear-gradient(180deg,var(--teal),var(--electric),rgba(90,155,255,0.1));
+  border-radius:2px;
+}
+.job{position:relative;margin-bottom:48px;padding-bottom:8px;}
+.job:last-child{margin-bottom:0;}
+.job-dot{
+  position:absolute;left:-39px;top:8px;
+  width:16px;height:16px;border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),var(--electric));
+  box-shadow:0 0 14px rgba(0,229,216,0.55);
+  border:2px solid var(--navy);
+}
+.job-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:6px;}
+.job-role{font-family:'Space Grotesk',sans-serif;font-size:1.12rem;font-weight:700;color:var(--white);}
+.job-date{
+  font-size:.78rem;color:var(--teal);
+  background:rgba(0,229,216,0.09);border:1px solid var(--border);
+  padding:4px 14px;border-radius:50px;white-space:nowrap;font-weight:500;
+}
+.job-company{font-size:.92rem;color:var(--electric);margin-bottom:16px;font-weight:500;}
+.job-bullets{list-style:none;}
+.job-bullets li{
+  padding:5px 0 5px 22px;position:relative;
+  font-size:.9rem;color:var(--text);line-height:1.7;
+}
+.job-bullets li::before{
+  content:'▹';position:absolute;left:0;color:var(--teal);font-size:.82rem;top:6px;
+}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;}
+.skill-card{
+  background:var(--card-bg);border:1.5px solid var(--border);
+  border-radius:18px;padding:28px;
+  transition:transform .25s,border-color .25s,background .25s,box-shadow .25s;
+}
+.skill-card:hover{
+  transform:translateY(-5px);border-color:var(--border-hover);
+  background:var(--card-hover);box-shadow:0 12px 40px rgba(0,229,216,0.07);
+}
+.skill-card-title{
+  font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;
+  color:var(--teal);margin-bottom:18px;letter-spacing:.04em;
+}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.tag{
+  font-size:.8rem;padding:6px 13px;border-radius:8px;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+  color:var(--text);transition:background .2s,border-color .2s;
+}
+.tag:hover{background:rgba(0,229,216,0.1);border-color:rgba(0,229,216,0.3);}
+
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+.edu-card{
+  background:var(--card-bg);border:1.5px solid var(--border);border-radius:18px;
+  padding:30px;transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.edu-card:hover{transform:translateY(-5px);border-color:rgba(90,155,255,0.5);box-shadow:0 10px 32px rgba(90,155,255,0.08);}
+.edu-icon{font-size:2rem;margin-bottom:14px;}
+.edu-degree{font-family:'Space Grotesk',sans-serif;font-size:1.02rem;font-weight:700;margin-bottom:8px;color:var(--white);}
+.edu-school{font-size:.88rem;color:var(--electric);margin-bottom:8px;font-weight:500;line-height:1.5;}
+.edu-year{
+  font-size:.78rem;color:var(--muted);
+  display:inline-block;background:rgba(90,155,255,0.08);
+  border:1px solid rgba(90,155,255,0.2);padding:3px 12px;border-radius:50px;
+}
+
+/* ── PROJECTS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;}
+.proj-card{
+  background:var(--card-bg);border:1.5px solid var(--border);border-radius:18px;
+  padding:30px;transition:transform .25s,border-color .25s,box-shadow .25s;
+  display:flex;flex-direction:column;gap:10px;
+}
+.proj-card:hover{transform:translateY(-6px);border-color:var(--border-hover);box-shadow:0 16px 48px rgba(0,229,216,0.09);}
+.proj-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+.proj-num{font-size:.75rem;color:var(--teal);font-weight:600;letter-spacing:.12em;opacity:.7;}
+.proj-duration{font-size:.75rem;color:var(--muted);background:rgba(0,229,216,0.07);border:1px solid var(--border);padding:3px 11px;border-radius:50px;font-weight:500;}
+.proj-name{font-family:'Space Grotesk',sans-serif;font-size:1.08rem;font-weight:700;color:var(--white);}
+.proj-desc{font-size:.88rem;color:var(--text);line-height:1.72;flex:1;}
+
+/* Other Projects */
+.other-projects{margin-top:56px;}
+.other-title{
+  font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;
+  color:var(--white);margin-bottom:20px;display:flex;align-items:center;gap:12px;
+}
+.other-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.other-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.other-link{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 16px;border-radius:12px;
+  background:var(--card-bg);border:1px solid var(--border);
+  text-decoration:none;color:var(--text);font-size:.84rem;font-weight:500;
+  transition:transform .2s,border-color .2s,color .2s,background .2s;
+  word-break:break-all;
+}
+.other-link:hover{transform:translateY(-3px);border-color:var(--teal);color:var(--teal);background:rgba(0,229,216,0.06);}
+.other-link .link-icon{font-size:1rem;flex-shrink:0;}
+
+/* ── CONTACT ── */
+#contact{text-align:center;}
+.contact-intro{color:var(--muted);max-width:520px;margin:0 auto 48px;font-size:1.02rem;line-height:1.7;}
+.contact-cards{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;}
+.contact-card{
+  background:var(--card-bg);border:1.5px solid var(--border);border-radius:16px;
+  padding:24px 28px;text-decoration:none;color:var(--white);
+  display:flex;align-items:center;gap:16px;
+  transition:transform .2s,border-color .2s,box-shadow .2s;
+  min-width:230px;
+}
+.contact-card:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:0 10px 32px rgba(0,229,216,0.14);}
+.contact-icon{
+  font-size:1.6rem;width:48px;height:48px;border-radius:12px;
+  background:rgba(0,229,216,0.08);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.contact-info .label{font-size:.72rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;}
+.contact-info .value{font-size:.9rem;font-weight:600;color:var(--white);}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:32px 5%;
+  border-top:1px solid var(--border);
+  color:var(--muted);font-size:.82rem;
+  position:relative;z-index:1;line-height:1.6;
+}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-14px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.5);}}
+
+/* ── RESPONSIVE ── */
+
+/* Tablet */
+@media(max-width:900px){
+  .about-grid{grid-template-columns:160px 1fr;gap:36px;}
+  .avatar-wrap{position:static;}
+  .hero-stats .stat{padding:0 18px;}
+  .stat-num{font-size:1.9rem;}
+}
+
+/* Mobile */
+@media(max-width:768px){
+  nav .nav-links{display:none;}
+  .hamburger{display:flex;}
+
+  #hero{padding:90px 5% 50px;}
+  .hero-stats{gap:0;margin-top:44px;padding-top:32px;}
+  .hero-stats .stat{padding:14px 16px;border-right:none;border-bottom:1px solid var(--border);width:50%;}
+  .hero-stats .stat:nth-child(odd){border-right:1px solid var(--border);}
+  .hero-stats .stat:nth-last-child(-n+2){border-bottom:none;}
+  .stat-num{font-size:1.75rem;}
+
+  section{padding:70px 5%;}
+  .about-grid{grid-template-columns:1fr;}
+  .avatar-wrap{max-width:140px;margin:0 auto;position:static;}
+  .about-summary{font-size:.97rem;}
+
+  .timeline{padding-left:24px;}
+  .job-dot{left:-31px;}
+  .job-role{font-size:1rem;}
+  .job-bullets li{font-size:.86rem;}
+
+  .projects-grid{grid-template-columns:1fr;}
+  .edu-grid{grid-template-columns:1fr;}
+  .skills-grid{grid-template-columns:1fr;}
+  .contact-cards{flex-direction:column;align-items:stretch;}
+  .contact-card{min-width:unset;}
+
+  .section-title{font-size:1.65rem;}
+  .btn-primary,.btn-outline{padding:12px 26px;font-size:.9rem;}
+}
+
+/* Small mobile */
+@media(max-width:420px){
+  .hero-name{font-size:2.3rem;}
+  .hero-stats .stat{width:50%;}
+  .stat-num{font-size:1.5rem;}
+  .hero-ctas{flex-direction:column;align-items:center;}
+  .pill{font-size:.78rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Rahul Deo</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#education" onclick="closeMenu()">Education</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Available for Opportunities</div>
+    <h1 class="hero-name">Rahul Deo</h1>
+    <p class="hero-title">
+      <strong>SEO &amp; AI-Driven Growth Marketing Manager</strong><br>
+      B2B Lead Generation · Organic + Paid Strategy · AEO / GEO
+    </p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Get In Touch</a>
+      <a href="#experience" class="btn-outline">View Experience</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">9+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10x</div>
+        <div class="stat-label">Organic Traffic Growth</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">600+</div>
+        <div class="stat-label">B2B Leads / Year</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5K+</div>
+        <div class="stat-label">Keywords Ranked</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="max-w">
+    <div class="section-tag">About Me</div>
+    <h2 class="section-title">Who I Am</h2>
+    <div class="section-line"></div>
+    <div class="about-grid reveal">
+      <div class="avatar-wrap">🚀</div>
+      <div>
+        <p class="about-summary">SEO &amp; Growth Marketing Manager with 9+ years of experience in organic growth, B2B lead generation, and performance marketing. Specialized in AI-driven SEO (AEO/GEO), technical SEO, and content strategy for modern search platforms.</p>
+        <p class="about-summary">Experienced in building SEO-first, AI-optimized websites and managing multi-channel paid campaigns across LinkedIn, Google, Reddit, and Quora to drive brand awareness, targeted traffic, and qualified leads.</p>
+        <div class="info-pills">
+          <div class="pill">📍 <span>Noida Extension, UP, India</span></div>
+          <div class="pill">📞 <span>9582450043</span></div>
+          <div class="pill">✉️ <span>rahuldeo46@gmail.com</span></div>
+          <div class="pill">🔗 <span>linkedin.com/in/rahul-deo-00</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="max-w">
+    <div class="section-tag">Career Journey</div>
+    <h2 class="section-title">Work Experience</h2>
+    <div class="section-line"></div>
+    <div class="timeline reveal">
+
+      <div class="job">
+        <div class="job-dot"></div>
+        <div class="job-header">
+          <div class="job-role">Manager, SEO &amp; Digital Marketing</div>
+          <div class="job-date">Jan 2023 – Present</div>
+        </div>
+        <div class="job-company">Jasper Colin Research · Market Research &amp; Data Analytics</div>
+        <ul class="job-bullets">
+          <li>Launched the Jasper Colin website end-to-end with SEO-first architecture to drive organic growth</li>
+          <li>Achieved 10x growth in organic traffic and lead generation within 6 months of website launch</li>
+          <li>Generated 500–600 leads annually through integrated SEO, paid campaigns, and ABM</li>
+          <li>Positioned Jasper Colin for the US market through strategic content development and search visibility</li>
+          <li>Led a team of 5 digital marketing professionals managing execution and performance</li>
+          <li>Managed multi-channel paid campaigns across LinkedIn, Google Ads, Reddit, and Quora</li>
+          <li>Optimized website structure for AI-driven search (AEO/GEO) with structured data and answer-based queries</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-dot"></div>
+        <div class="job-header">
+          <div class="job-role">SEO Team Lead</div>
+          <div class="job-date">Oct 2021 – Dec 2022</div>
+        </div>
+        <div class="job-company">Research Nester Private Limited · Global Market Research Firm</div>
+        <ul class="job-bullets">
+          <li>Managed and guided a team of 6 SEO professionals to improve organic traffic and B2B leads</li>
+          <li>Generated 400–600 high-quality global leads (USA, Japan, Europe) monthly via content distribution and PR</li>
+          <li>Managed two websites simultaneously: SEO strategy, content marketing, lead generation, and performance tracking</li>
+          <li>Managed paid campaigns across Google Ads, LinkedIn, and Facebook</li>
+          <li>Monitored performance metrics and optimized campaigns using data-driven insights</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-dot"></div>
+        <div class="job-header">
+          <div class="job-role">SEO Team Lead</div>
+          <div class="job-date">Dec 2017 – Oct 2021</div>
+        </div>
+        <div class="job-company">Adequate Infosoft Pvt. Ltd. · Software Development Company</div>
+        <ul class="job-bullets">
+          <li>Successfully launched the Adequate Infosoft website from scratch with fully SEO-optimized structure</li>
+          <li>Generated 50–60 organic leads per month through SEO and content strategies</li>
+          <li>Worked on multiple USA-based client websites, improving keyword rankings and organic growth</li>
+          <li>Managed Facebook lead generation campaigns targeting US audiences</li>
+          <li>Handled App Store Optimization (ASO) and Google app promotion campaigns to increase app downloads</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-dot"></div>
+        <div class="job-header">
+          <div class="job-role">SEO Executive</div>
+          <div class="job-date">Dec 2016 – Dec 2017</div>
+        </div>
+        <div class="job-company">Apppl Combine · Advertising &amp; Marketing Agency</div>
+        <ul class="job-bullets">
+          <li>Executed on-page and off-page SEO activities including keyword research and competitor analysis</li>
+          <li>Built quality backlinks to improve keyword rankings, organic visibility, and domain authority</li>
+          <li>Tracked SEO performance via keyword ranking sheets and shared regular reports with team lead</li>
+          <li>Developed understanding of creative advertising concepts and campaign ideation</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="max-w">
+    <div class="section-tag">Expertise</div>
+    <h2 class="section-title">Skills &amp; Tools</h2>
+    <div class="section-line"></div>
+    <div class="skills-grid reveal">
+      <div class="skill-card">
+        <div class="skill-card-title">🔍 SEO &amp; Growth</div>
+        <div class="skill-tags">
+          <span class="tag">On-Page SEO</span><span class="tag">Off-Page SEO</span>
+          <span class="tag">Technical SEO</span><span class="tag">Keyword Research</span>
+          <span class="tag">Competitor Analysis</span><span class="tag">Link Building</span>
+          <span class="tag">Content Marketing</span><span class="tag">Local SEO</span>
+          <span class="tag">AI SEO (AEO/GEO)</span><span class="tag">WordPress</span>
+          <span class="tag">Blogger</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">📣 Paid Marketing</div>
+        <div class="skill-tags">
+          <span class="tag">Google Ads</span><span class="tag">LinkedIn Ads</span>
+          <span class="tag">Facebook Ads</span><span class="tag">Quora Ads</span>
+          <span class="tag">Reddit Ads</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">📊 Analytics &amp; Tools</div>
+        <div class="skill-tags">
+          <span class="tag">Google Analytics (GA4)</span><span class="tag">Search Console</span>
+          <span class="tag">Ahrefs</span><span class="tag">SEMrush</span>
+          <span class="tag">Google Tag Manager</span><span class="tag">Screaming Frog</span>
+          <span class="tag">HubSpot</span><span class="tag">ChatGPT / Gemini</span>
+          <span class="tag">Google My Business</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">🎯 Marketing Strategy</div>
+        <div class="skill-tags">
+          <span class="tag">B2B Lead Generation</span><span class="tag">Conversion Optimization</span>
+          <span class="tag">Social Media Marketing</span><span class="tag">Campaign Strategy</span>
+          <span class="tag">SMO</span><span class="tag">Account-Based Marketing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="max-w">
+    <div class="section-tag">Academic Background</div>
+    <h2 class="section-title">Education</h2>
+    <div class="section-line"></div>
+    <div class="edu-grid reveal">
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-degree">B.Tech in Information Technology</div>
+        <div class="edu-school">ITS Engineering College, Greater Noida</div>
+        <div class="edu-year">2010 – 2014</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">📚</div>
+        <div class="edu-degree">12th (Intermediate)</div>
+        <div class="edu-school">Shakya Muni College, Bodh Gaya · BSEB, Patna</div>
+        <div class="edu-year">2009</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">📖</div>
+        <div class="edu-degree">10th (Matriculation – Science)</div>
+        <div class="edu-school">BSEB, Patna</div>
+        <div class="edu-year">2006</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="max-w">
+    <div class="section-tag">Work Portfolio</div>
+    <h2 class="section-title">Key Projects</h2>
+    <div class="section-line"></div>
+    <div class="projects-grid reveal">
+
+      <div class="proj-card">
+        <div class="proj-meta"><div class="proj-num">01</div><div class="proj-duration">40 Months</div></div>
+        <div class="proj-name">Jasper Colin</div>
+        <div class="proj-desc">Launched the B2B website from scratch with a fully SEO-optimized structure and SEO-first strategy. Handled technical SEO, on-page optimization, keyword research, content marketing, site structure, and SEO audits. Managed LinkedIn Ads for brand awareness and B2B lead generation, along with SEO-driven blogs and landing pages across organic and paid channels.</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-meta"><div class="proj-num">02</div><div class="proj-duration">12 Months</div></div>
+        <div class="proj-name">Research Nester</div>
+        <div class="proj-desc">Worked on global lead generation through SEO, content marketing, social media, and paid campaigns for a market research and consulting company. Generated around 500–600 leads per month with 300–500 keywords ranking on Google's first page.</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-meta"><div class="proj-num">03</div><div class="proj-duration">12 Months</div></div>
+        <div class="proj-name">Kenneth Research</div>
+        <div class="proj-desc">Generated leads through keyword ranking, content marketing, and high-end PR submissions for referral traffic. Achieved around 400–500 global leads per month for this market research firm.</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-meta"><div class="proj-num">04</div><div class="proj-duration">24 Months</div></div>
+        <div class="proj-name">Adequate Infosoft</div>
+        <div class="proj-desc">Handled SEO, content marketing, and lead generation for a software and digital marketing company. Performed on-page and off-page SEO, achieved ~60 keywords on Google's first page, and generated leads through Google PPC and LinkedIn lead generation campaigns globally.</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-meta"><div class="proj-num">05</div><div class="proj-duration">36 Months</div></div>
+        <div class="proj-name">Adequate Travel</div>
+        <div class="proj-desc">Built a travel blog from scratch and drove strong organic traffic growth through on-page and off-page SEO. Achieved around 5,000 keywords ranking on Google's first page, generating high organic visibility and traffic.</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-meta"><div class="proj-num">06</div><div class="proj-duration">5 Months</div></div>
+        <div class="proj-name">Prostar Doors California</div>
+        <div class="proj-desc">Managed Facebook lead generation campaigns for a California-based glass door repair and installation company, generating around 4–5 leads per day with an average daily ad spend of $50.</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-meta"><div class="proj-num">07</div><div class="proj-duration">6 Months</div></div>
+        <div class="proj-name">Alta Point Consulting</div>
+        <div class="proj-desc">Handled keyword ranking, lead generation via Facebook and LinkedIn, email marketing, content marketing, retargeting via AdRoll, and Facebook brand awareness campaigns for this consulting firm.</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-meta"><div class="proj-num">08</div><div class="proj-duration">8 Months</div></div>
+        <div class="proj-name">Consilien</div>
+        <div class="proj-desc">Improved keyword rankings, increased organic traffic, and generated leads through SEO for a USA-based managed IT solutions company. Also performed local SEO to boost visibility in targeted US locations.</div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-meta"><div class="proj-num">09</div><div class="proj-duration">6 Months</div></div>
+        <div class="proj-name">Raven.net</div>
+        <div class="proj-desc">Optimized a California-based IT Managed Support Services company through on-page, technical, and off-page SEO. Improved local keyword rankings in California, increased organic traffic, and supported lead generation growth.</div>
+      </div>
+
+    </div>
+
+    <!-- OTHER PROJECTS -->
+    <div class="other-projects reveal">
+      <div class="other-title">Other Projects</div>
+      <div class="other-grid">
+        <a href="https://www.sdki.jp/" target="_blank" rel="noopener" class="other-link"><span class="link-icon">🔗</span>sdki.jp</a>
+        <a href="https://www.researchnester.jp/" target="_blank" rel="noopener" class="other-link"><span class="link-icon">🔗</span>researchnester.jp</a>
+        <a href="https://apppl.com/" target="_blank" rel="noopener" class="other-link"><span class="link-icon">🔗</span>apppl.com</a>
+        <a href="http://www.foxnangel.com/" target="_blank" rel="noopener" class="other-link"><span class="link-icon">🔗</span>foxnangel.com</a>
+        <a href="https://brandwand.in/" target="_blank" rel="noopener" class="other-link"><span class="link-icon">🔗</span>brandwand.in</a>
+        <a href="https://www.hitmoviedialogues.in/" target="_blank" rel="noopener" class="other-link"><span class="link-icon">🔗</span>hitmoviedialogues.in</a>
+        <a href="https://www.glassmogul.com/" target="_blank" rel="noopener" class="other-link"><span class="link-icon">🔗</span>glassmogul.com</a>
+        <a href="https://www.adequatedeal.com/" target="_blank" rel="noopener" class="other-link"><span class="link-icon">🔗</span>adequatedeal.com</a>
+        <a href="https://www.petsdevotee.com/" target="_blank" rel="noopener" class="other-link"><span class="link-icon">🔗</span>petsdevotee.com</a>
+        <a href="https://www.theusalist.com/" target="_blank" rel="noopener" class="other-link"><span class="link-icon">🔗</span>theusalist.com</a>
+        <a href="https://theaiindexer.net/" target="_blank" rel="noopener" class="other-link"><span class="link-icon">🔗</span>theaiindexer.net</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="max-w">
+    <div class="section-tag">Let's Connect</div>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="section-line" style="margin:0 auto 16px;"></div>
+    <p class="contact-intro">Open to new opportunities, collaborations, and conversations about SEO &amp; growth marketing.</p>
+    <div class="contact-cards reveal">
+      <a href="mailto:rahuldeo46@gmail.com" class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-info">
+          <div class="label">Email</div>
+          <div class="value">rahuldeo46@gmail.com</div>
+        </div>
+      </a>
+      <a href="tel:9582450043" class="contact-card">
+        <div class="contact-icon">📞</div>
+        <div class="contact-info">
+          <div class="label">Phone</div>
+          <div class="value">+91 9582450043</div>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/rahul-deo-00" target="_blank" rel="noopener" class="contact-card">
+        <div class="contact-icon">💼</div>
+        <div class="contact-info">
+          <div class="label">LinkedIn</div>
+          <div class="value">rahul-deo-00</div>
+        </div>
+      </a>
+      <a href="#" class="contact-card">
+        <div class="contact-icon">📍</div>
+        <div class="contact-info">
+          <div class="label">Location</div>
+          <div class="value">Noida Extension, UP, India</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Rahul Deo &nbsp;·&nbsp; SEO &amp; AI-Driven Growth Marketing Manager</p>
+  <p style="margin-top:6px;font-size:.76rem;">Built with ❤️ for performance &amp; visibility</p>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Hamburger menu
+const ham = document.getElementById('hamburger');
+const menu = document.getElementById('mobileMenu');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('open');
+  menu.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMenu() {
+  ham.classList.remove('open');
+  menu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+// Close on outside click
+document.addEventListener('click', e => {
+  if (menu.classList.contains('open') && !menu.contains(e.target) && !ham.contains(e.target)) closeMenu();
+});
+</script>
+</body>
+</html>
